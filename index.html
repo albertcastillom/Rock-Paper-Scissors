@@ -7,7 +7,94 @@
 </head>
 <body>
     <script>
-        console.log("hey");
+         function getComputerChoice(){
+            let rand = Math.floor(Math.random() * 3)
+            if (rand === 0){
+                return "scissors";
+            }
+            else if (rand === 1){
+                return "paper";
+            }
+            else {
+                return "rock";
+            }
+         }
+
+        function getHumanChoice(){
+            let choice = prompt("rock, paper, or scissors? Type your choice.");
+
+            if (choice.toLowerCase() === "rock") {
+             return "rock";
+            }
+            else if (choice.toLowerCase() === "paper"){
+                return "paper";
+            }
+            else if (choice.toLowerCase() === "scissors"){
+                return "scissors";
+            }
+        }
+        
+        let humanScore = 0;
+        let computerScore = 0;
+
+        function playRound(humanChoice, computerChoice){
+
+
+            if (humanChoice === "rock" && computerChoice === "scissors"){
+                console.log("You win!");
+                return humanScore++ ;
+            }
+            else if(humanChoice === "rock" && computerChoice === "paper" ){
+                console.log("You lose :(");
+                return computerScore++ ;
+            }
+            else if (computerChoice === "rock" && humanChoice === "scissors"){
+                console.log("You lose :(");
+                return computerScore++ ;
+            }
+            else if (computerChoice === "rock" && humanChoice === "paper"){
+                console.log("You win!");
+                return humanScore++ ;
+            }
+            else if (humanChoice === "paper" && computerChoice === "scissors"){
+                console.log("You lose :(");
+                return computerScore++;
+            }
+            else if( humanChoice === "scissors" && computerChoice === "paper"){
+                console.log("You win!");
+                return humanChoice++;
+            }
+             else {
+                console.log("you tied!");
+             }
+
+        }
+
+       
+    
+        function playGame(){
+            let i = 0
+            while (i<5){
+                const humanSelection = getHumanChoice();
+                const computerSelection = getComputerChoice();
+                console.log(computerSelection);
+                playRound(humanSelection, computerSelection);
+                console.log(humanScore);
+                console.log(computerScore);
+                i++;
+            }
+            if (humanScore > computerScore){
+                console.log("you are the winner!");
+            }
+            else if (computerScore > humanScore){
+                console.log("you are NOT the winner! Better luck next time.");
+            }
+            else if (computerScore === humanScore){
+                console.log("you and the computer tied");
+            }
+        }
+      
+        playGame();
     </script>
     
 </body>
