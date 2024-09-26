@@ -3,9 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock-Paper-Scissors</title>
 </head>
 <body>
+
+    <h1 class="title"> Rock-Paper-Scissors game</h1>
+    <div class="header">Please select your choice:</div>
+    <div id="choices">
+        <button id="Rock">Rock</button>
+        <button id="Paper">Paper</button>
+        <button id="Scissors">scissors<button>
+    </div>
+
+
     <script>
          function getComputerChoice(){
             let rand = Math.floor(Math.random() * 3)
@@ -18,10 +28,10 @@
             else {
                 return "rock";
             }
-         }
+         };
 
         function getHumanChoice(){
-            let choice = prompt("rock, paper, or scissors? Type your choice.");
+            let choice = prompt("rock, paper, or scissors? Type your choice please.");
 
             if (choice.toLowerCase() === "rock") {
              return "rock";
@@ -32,7 +42,26 @@
             else if (choice.toLowerCase() === "scissors"){
                 return "scissors";
             }
-        }
+        };  
+
+        const btn = document.querySelector("#choices");
+
+        btn.addEventListener("click", (event)=> {
+        let target = event.target;
+
+            switch(target.id){
+                case 'Rock':
+                humanSelection = target.id;
+            break;
+                case 'Paper':
+                humanSelection = target.id;
+            break;
+                case 'Scissors':
+                humanSelection = target.id;
+            break;
+            }
+        });
+
         
         let humanScore = 0;
         let computerScore = 0;
@@ -68,21 +97,19 @@
                 console.log("you tied!");
              }
 
-        }
-
-       
+        };
     
         function playGame(){
             let i = 0
-            while (i<5){
-                const humanSelection = getHumanChoice();
+    
+               // const humanSelection = getHumanChoice();
                 const computerSelection = getComputerChoice();
                 console.log(computerSelection);
                 playRound(humanSelection, computerSelection);
                 console.log(humanScore);
                 console.log(computerScore);
-                i++;
-            }
+        
+        
             if (humanScore > computerScore){
                 console.log("you are the winner!");
             }
@@ -92,9 +119,12 @@
             else if (computerScore === humanScore){
                 console.log("you and the computer tied");
             }
-        }
+        };
       
-        playGame();
+      // playGame();
+
+        
+    
     </script>
     
 </body>
